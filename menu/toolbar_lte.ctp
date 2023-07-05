@@ -31,7 +31,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">Men&uacute; principal</li>
-            <li><a href="/lp3/menu.php"><span class="glyphicon glyphicon-home"></span> <strong>Inicio</strong></a></li>
+            <li><a href="/Taller4/menu.php"><span class="glyphicon glyphicon-home"></span> <strong>Inicio</strong></a></li>
 
             <?php
             //Obtener el nombre de los modulos
@@ -39,7 +39,7 @@
             join paginas b on a.mod_cod=b.mod_cod
             order by mod_nombre");*/
             //$modulos=consultas::get_datos("select * from modulos order by mod_cod");    
-            $modulos = consultas::get_datos("select distinct(mod_cod), (mod_nombre) from v_permisos where gru_cod =" . $_SESSION['gru_cod'] . " order by mod_nombre");
+            $modulos = consultas::get_datos("select distinct(mod_cod_dt), (mod_nombre) from v_permisos where gru_cod =" . $_SESSION['gru_cod'] . " order by mod_nombre");
 
 
             foreach ($modulos as $modulo) { ?>
@@ -49,7 +49,7 @@
                     </a>
                     <?php
                     //Obtener las paginas de acuerdo al modulo
-                    $paginas = consultas::get_datos("select pag_cod, pag_direc, pag_nombre, leer, editar, borrar, insertar from v_permisos where mod_cod=" . $modulo['mod_cod'] . "and gru_cod = " . $_SESSION['gru_cod']);
+                    $paginas = consultas::get_datos("select pag_cod, pag_direc, pag_nombre, leer, editar, borrar, insertar from v_permisos where mod_cod_dt=" . $modulo['mod_cod_dt'] . " and gru_cod = " . $_SESSION['gru_cod']);
 
                     ?>
                     <ul class="treeview-menu">
