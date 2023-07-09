@@ -99,7 +99,7 @@
                                                                     <a onclick="editar(<?php echo "'" . $persona['per_cod'] . "_" . $persona['per_nombres'] . "'"; ?>)" class="btn btn-warning btn-sm" role="buttom" data-title="Editar" rel="tooltip" data-toggle="modal" data-target="#editar">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
-                                                                    <a onclick="borrar(<?php echo "'" . $persona['per_cod'] . "_" . $persona['per_nombres'] . "'"; ?>)" class="btn btn-danger btn-sm" role="buttom" data-title="Borrar" rel="tooltip" data-toggle="modal" data-target="#borrar">
+                                                                    <a onclick="borrar(<?php echo "'" . $persona['per_cod']  . "'"; ?>)" class="btn btn-danger btn-sm" role="buttom" data-title="Borrar" rel="tooltip" data-toggle="modal" data-target="#borrar">
                                                                         <i class="fa fa-trash"></i>
                                                                     </a>
                                                                 </td>
@@ -139,14 +139,54 @@
                         <button type="button" class="close" data-dismiss="modal" arial-label="Close">x</button>
                         <h4 class="modal-title"><i class="fa fa-plus"></i> <strong>Registrar Peronas</strong></h4>
                     </div>
-                    <form action="modulo_control.php" method="post" accept-charset="utf-8" class="form-horizontal">
+                    <form action="personas_control.php" method="post" accept-charset="utf-8" class="form-horizontal">
                         <input type="hidden" name="accion" value="1">
-                        <input type="hidden" name="vmod_cod" value="0">
+                        <input type="hidden" name="vper_cod" value="0">
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="control-label col-sm-2">Descripción:</label>
+                                <label class="control-label col-sm-2">Nombres:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="vmod_nombre" class="form-control" required="" autofocus="" />
+                                    <input type="text" name="vper_nombres" class="form-control" required="" autofocus="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Apellidos:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="vper_apellido" class="form-control" required="" autofocus="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Direccion:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="vper_direcc" class="form-control" required="" autofocus="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Telefono:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="vper_telefono" class="form-control" required="" autofocus="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Tipo Documento:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="vper_tipodocumento" class="form-control" required="" autofocus="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Ver Documento:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="vper_documento" class="form-control" required="" autofocus="" />
                                 </div>
                             </div>
                         </div>
@@ -171,19 +211,48 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" arial-label="Close">x</button>
-                        <h4 class="modal-title"><i class="fa fa-edit"></i> <strong>Editar Modulos</strong></h4>
+                        <h4 class="modal-title"><i class="fa fa-edit"></i> <strong>Editar Datos Persona</strong></h4>
                     </div>
-                    <form action="modulo_control.php" method="post" accept-charset="utf-8" class="form-horizontal">
+                    <form action="personas_control.php" method="post" accept-charset="utf-8" class="form-horizontal">
                         <input type="hidden" name="accion" value="2">
-                        <input type="hidden" name="vmod_cod" id="cod" value="0">
+                        <input type="hidden" name="vper_cod" id="cod" value="0">
+
                         <div class="modal-body">
                             <div class="form-group">
-                                <label class="control-label col-sm-2">Descripción:</label>
+                                <label class="control-label col-sm-2">Nombres:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="vmod_nombre" id="descri" class="form-control" required="" autofocus="" />
+                                    <input type="text" name="vper_nombres" id="nombres" class="form-control" required="" autofocus="" />
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Apellidos:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="vper_apellido" id="apellido" class="form-control" required="" autofocus="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Direccion:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="vper_direcc" id="direccion" class="form-control" required="" autofocus="" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">Telefono:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="vper_telefono" id="telefono" class="form-control" required="" autofocus="" />
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="modal-footer">
                             <button type="reset" data-dismiss="modal" class="btn btn-default pull-left">
                                 <i class="fa fa-remove"></i> Cerrar</button>
