@@ -64,33 +64,30 @@
                                         </form>
                                         <?php
                                         //consulta a la tabla marca
-                                        $articulos = consultas::get_datos("select * from v_articulo where art_descri like '%" . (isset($_REQUEST['buscar']) ? $_REQUEST['buscar'] : "") . "%' order by mar_cod");
+                                        $presentaciones = consultas::get_datos("select * from v_presentacion where pre_descri like '%" . (isset($_REQUEST['buscar']) ? $_REQUEST['buscar'] : "") . "%' order by pre_id");
                                         //var_dump($articulosk);
-                                        if (!empty($articulos)) { ?>
+                                        if (!empty($presentaciones)) { ?>
                                             <div class="table-responsive">
                                                 <table class="table table-condensed table-striped table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th>Descripción</th>
-                                                            <th>Precio Costo</th>
-                                                            <th>Precio Venta</th>
-                                                            <th>Impuesto</th>
+                                                            <th>Presentacion</th>
+                                                            <th>Tipo de Medida</th>
+                                                            <th>Dosis</th>
                                                             <th class="text-center">Acciones</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <?php foreach ($articulos as $art) { ?>
+                                                        <?php foreach ($presentaciones as $pre) { ?>
                                                             <tr>
-                                                                <td data-title='Descripción'><?php echo $art['art_descri'] . " " . $art['mar_descri']; ?></td>
-                                                                <td data-title='Precio Costo'><?php echo number_format($art['art_precioc'], 0, ",", "."); ?></td>
-                                                                <td data-title='Precio Venta'><?php echo number_format($art['art_preciov'], 0, ",", "."); ?></td>
-
-                                                                <td data-title='Precio Venta'><?php echo $art['tipo_descri']; ?></td>
+                                                                <td data-title='Presentacion'><?php echo $pre['pre_descri']; ?></td>
+                                                                <td data-title='Tipo de Medida'><?php echo $pre['med_descri']; ?></td>
+                                                                <td data-title='Dosis'><?php echo number_format($pre['med_nrodosis'], 0, ",", "."); ?></td>
                                                                 <td data-title='Acciones' class="text-center">
-                                                                    <a href="marca_edit.php?vmar_cod=<?php echo $art['art_cod']; ?>" class="btn btn-warning btn-sm" role='button' data-title='Editar' rel='tooltip' data-placement='top'>
+                                                                    <a href="marca_edit.php?vpre_id=<?php echo $pre['pre_id']; ?>" class="btn btn-warning btn-sm" role='button' data-title='Editar' rel='tooltip' data-placement='top'>
                                                                         <span class="glyphicon glyphicon-edit"></span>
                                                                     </a>
-                                                                    <a onclick="borrar(<?php echo "'" . $art['art_cod'] . "_" . $art['art_descri'] . "'"; ?>)" class="btn btn-danger btn-sm" role='button' data-title='Borrar' rel='tooltip' data-placement='top' data-toggle="modal" data-target="#borrar">
+                                                                    <a onclick="borrar(<?php echo "'" . $pre['pre_id'] . "_" . $pre['pre_descri'] . "'"; ?>)" class="btn btn-danger btn-sm" role='button' data-title='Borrar' rel='tooltip' data-placement='top' data-toggle="modal" data-target="#borrar">
                                                                         <span class="glyphicon glyphicon-trash"></span>
                                                                     </a>
                                                                 </td>
@@ -150,7 +147,7 @@
     <script>
         function borrar(datos) {
             var dat = datos.split("_");
-            $('#si').attr('href', 'articulo_control.php?vart_cod=' + dat[0] + '&vart_descri=' + dat[1] + '&accion=3');
+            $('#si').attr('href', 'presentaciones_control.php?vart_cod=' + dat[0] + '&vart_descri=' + dat[1] + '&accion=3');
             $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> \n\
             Desea borrrar el articulo <strong>' + dat[1] + '</strong>?');
         }
