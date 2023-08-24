@@ -7,8 +7,10 @@ echo "   Clave:" . $_REQUEST['clave'];
 /*
 $sql = "select * from v_usuarios where usu_nick='" . $_REQUEST['usuario']
     . "' and usu_clave=md5('" . $_REQUEST['clave'] . "')";*/
+
 $sql = "select * from v_usuarios where usu_nick='" . $_REQUEST['usuario']
     . "' and usu_clave=('" . $_REQUEST['clave'] . "')";
+     //   $sql = "select * from v_usuarios where usu_nick='" . $_REQUEST['usuario']."')";
 
 
 $resultado = consultas::get_datos($sql); //Carga los resulta en el vector 

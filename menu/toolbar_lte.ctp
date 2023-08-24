@@ -39,7 +39,7 @@
             join paginas b on a.mod_cod=b.mod_cod
             order by mod_nombre");*/
             //$modulos=consultas::get_datos("select * from modulos order by mod_cod");    
-            $modulos = consultas::get_datos("select distinct(mod_cod_dt), (mod_nombre) from v_permisos where gru_cod =" . $_SESSION['gru_cod'] . " order by mod_nombre");
+            $modulos = consultas::get_datos("select distinct(mod_cod_dt), (mod_nombre) from v_permisos where gru_cod = " . $_SESSION['gru_cod'] . " order by mod_nombre");
 
 
             foreach ($modulos as $modulo) { ?>
